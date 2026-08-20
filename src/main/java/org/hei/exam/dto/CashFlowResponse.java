@@ -7,14 +7,6 @@ import org.hei.exam.model.ExpenseFrequency;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-/**
- * Représente un CashFlow "à plat" pour les réponses API : reprend les champs
- * communs (id, createdAt, amount) + les champs spécifiques à Donation OU à
- * Expense selon le type. Les champs non concernés restent à null.
- *
- * Les classes du modèle (CashFlow, Donation, Expense) ne sont pas modifiées :
- * ce DTO ne sert qu'à la couche API / persistance.
- */
 @Setter
 @Getter
 public class CashFlowResponse {

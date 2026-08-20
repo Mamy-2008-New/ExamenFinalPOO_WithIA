@@ -29,7 +29,7 @@ public class JdbcUserRepository implements UserRepository {
     @Override
     public Optional<User> findById(String id) {
         List<User> results = jdbcTemplate.query(
-                "SELECT id, ref, first_name, last_name, email, phone FROM users WHERE id = ?",
+                "SELECT id, ref, first_name, last_name, email, phone FROM \"user\" WHERE id = ?",
                 USER_ROW_MAPPER, id
         );
         return results.stream().findFirst();
@@ -38,7 +38,7 @@ public class JdbcUserRepository implements UserRepository {
     @Override
     public List<User> findAll() {
         return jdbcTemplate.query(
-                "SELECT id, ref, first_name, last_name, email, phone FROM users",
+                "SELECT id, ref, first_name, last_name, email, phone FROM \"user\"",
                 USER_ROW_MAPPER
         );
     }

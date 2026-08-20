@@ -6,9 +6,6 @@ import org.hei.exam.model.ExpenseFrequency;
 
 import java.math.BigDecimal;
 
-/**
- * Corps de requête attendu pour POST /expenses.
- */
 @Setter
 @Getter
 public class ExpenseRequest {
