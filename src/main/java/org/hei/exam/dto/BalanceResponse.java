@@ -5,9 +5,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-/**
- * Réponse pour GET /balance : solde = total des dons - total des dépenses.
- */
 @Setter
 @Getter
 public class BalanceResponse {

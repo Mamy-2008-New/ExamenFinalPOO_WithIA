@@ -26,20 +26,17 @@ public class CashFlowService {
         this.userRepository = userRepository;
     }
 
-    /** GET /cash-flows?type=donation|expense */
     public List<CashFlowResponse> getCashFlows(String type) {
         String normalized = normalizeType(type);
         return cashFlowRepository.findByType(normalized);
     }
 
-    /** GET /users/{id}/cash-flows */
     public List<CashFlowResponse> getCashFlowsForUser(String userId) {
         userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("Utilisateur introuvable : " + userId));
         return cashFlowRepository.findByUserId(userId);
     }
 
-    /** POST /expenses */
     public CashFlowResponse createExpense(ExpenseRequest request) {
         if (request.getUserId() == null || request.getUserId().isBlank()) {
             throw new IllegalArgumentException("userId est requis");
@@ -63,7 +60,6 @@ public class CashFlowService {
                 .orElseThrow(() -> new IllegalStateException("Erreur lors de la création de la dépense"));
     }
 
-    /** GET /balance */
     public BalanceResponse getBalance() {
         BigDecimal totalDonations = cashFlowRepository.sumAmountByType("DONATION");
         BigDecimal totalExpenses = cashFlowRepository.sumAmountByType("EXPENSE");
