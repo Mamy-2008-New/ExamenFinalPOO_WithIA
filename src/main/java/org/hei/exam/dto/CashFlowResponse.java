@@ -14,13 +14,11 @@ public class CashFlowResponse {
     private String id;
     private Instant createdAt;
     private BigDecimal amount;
-    private String type;      // "DONATION" ou "EXPENSE"
+    private String type;
     private String userId;
 
-    // Rempli uniquement si type = DONATION
     private String comment;
 
-    // Remplis uniquement si type = EXPENSE
     private String reason;
     private ExpenseFrequency frequency;
 
