@@ -19,26 +19,22 @@ public class CashFlowController {
         this.cashFlowService = cashFlowService;
     }
 
-    // GET /cash-flows?type=donation|expense
     @GetMapping("/cash-flows")
     public List<CashFlowResponse> getCashFlows(@RequestParam String type) {
         return cashFlowService.getCashFlows(type);
     }
 
-    // GET /users/{id}/cash-flows
     @GetMapping("/users/{id}/cash-flows")
     public List<CashFlowResponse> getUserCashFlows(@PathVariable("id") String userId) {
         return cashFlowService.getCashFlowsForUser(userId);
     }
 
-    // POST /expenses
     @PostMapping("/expenses")
     @ResponseStatus(HttpStatus.CREATED)
     public CashFlowResponse createExpense(@RequestBody ExpenseRequest request) {
         return cashFlowService.createExpense(request);
     }
 
-    // GET /balance
     @GetMapping("/balance")
     public BalanceResponse getBalance() {
         return cashFlowService.getBalance();
